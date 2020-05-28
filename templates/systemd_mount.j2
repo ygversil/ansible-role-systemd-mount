@@ -1,0 +1,14 @@
+[Unit]
+Description={{ description }}
+After=network-online.target
+Wants=network-online.target
+
+[Mount]
+What={{ source_location }}
+Where={{ destination_location }}
+Options={{ options }}
+Type={{ type }}
+TimeoutSec=60
+
+[Install]
+WantedBy=remote-fs.target

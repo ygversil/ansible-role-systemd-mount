@@ -1,0 +1,43 @@
+## AUTO-DETECT
+##   Handle line endings automatically for files detected as
+##   text and leave all files detected as binary untouched.
+##   This will handle all files NOT defined below.
+* text=auto
+
+## SOURCE CODE
+*.bat      text eol=crlf
+*.ps1      text eol=crlf
+*.psm1     text eol=crlf
+*.json     text eol=lf
+*.yaml     text eol=lf
+*.yml      text eol=lf
+
+## ARCHIVES
+*.7z  binary
+*.gz  binary
+*.jar binary
+*.rar binary
+*.tar binary
+*.zip binary
+
+## EXECUTABLES
+*.exe binary
+
+# Basic .gitattributes for a python repo.
+
+# Source files
+# ============
+*.pxd   text
+*.py    text
+*.py3   text
+*.pyw   text
+*.pyx   text
+
+# Binary files
+# ============
+*.db    binary
+*.p     binary
+*.pkl   binary
+*.pyc   binary
+*.pyd   binary
+*.pyo   binary
