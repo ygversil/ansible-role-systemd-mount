@@ -1,0 +1,12 @@
+- hosts: localhost
+  remote_user: root
+  vars:
+    mounts:
+      TestMount:
+        description: tmpfs test mount
+        source_location: tmpfs
+        destination_location: /tmp_ansiblerole
+        options: noatime,nosuid,nodev,noexec,mode=1777
+        type: tmpfs
+  roles:
+    - systemd-mount
