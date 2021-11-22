@@ -1,18 +1,24 @@
+---
 repos:
--   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.0.1
-    hooks:
-    - id: trailing-whitespace
-    - id: check-json
-    - id: check-yaml
-    - id: detect-aws-credentials
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.0.1
+  hooks:
+  - id: trailing-whitespace
+  - id: end-of-file-fixer
+  - id: check-json
+  - id: pretty-format-json
+  - id: check-yaml
+  - id: requirements-txt-fixer
+  - id: double-quote-string-fixer
+  - id: detect-aws-credentials
+  - id: check-added-large-files
 # Ansible linter
--   repo: https://github.com/ansible/ansible-lint
-    rev: v5.2.1
-    hooks:
-    -   id: ansible-lint
-        exclude: >
+- repo: https://github.com/ansible/ansible-lint
+  rev: v5.2.1
+  hooks:
+  - id: ansible-lint
+    exclude: >
             (?x)^(
                 .pre-commit-config.yaml
             )$
-        files: \.(yaml|yml)$
+    files: \.(yaml|yml)$
