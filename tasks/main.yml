@@ -1,11 +1,12 @@
 ---
 - name: Setup systemd Service for mountpoints
-  template:
+  ansible.builtin.template:
     src: systemd_mount.j2
     dest: /etc/systemd/system/{{ item.value.destination_location[1:] | replace('/', "-") }}.mount
     mode: 0644
     owner: root
     group: root
   with_dict: "{{ mounts }}"
+  register: mounts_created
   notify: Activate systemd mount
   when: item.key is defined

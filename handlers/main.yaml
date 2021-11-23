@@ -1,8 +1,11 @@
 ---
 # handlers file for systemd-mounts
 - name: Activate systemd mount
-  systemd:
+  ansible.builtin.systemd:
     daemon_reload: yes
     name: "{{ item.value.destination_location[1:] | replace('/', '-') }}.mount"
     state: started
     enabled: yes
+    masked: no
+  when: item.changed
+  loop: mounts_created.results
