@@ -1,8 +1,8 @@
 ---
 galaxy_info:
-  role_name: systemd-mount
+  role_name: systemd_mount
   author: Paul Canham
-  description: An Ansible role to install and configure systemd-mount
+  description: An Ansible role to install and configure systemd_mount
   license: MIT
   min_ansible_version: 2.5
   platforms:
