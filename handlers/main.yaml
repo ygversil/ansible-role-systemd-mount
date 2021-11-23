@@ -3,6 +3,6 @@
 - name: Activate systemd mount
   systemd:
     daemon_reload: yes
-    name: "{{ item.value.destination_location[1:] | replace('/', "-") }}.mount"
+    name: "{{ item.value.destination_location[1:] | replace('/', '-') }}.mount"
     state: started
     enabled: yes
