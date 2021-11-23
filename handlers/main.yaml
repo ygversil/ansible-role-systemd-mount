@@ -7,3 +7,5 @@
     state: started
     enabled: yes
     masked: no
+  when: item.changed
+  loop: mounts_created.results
