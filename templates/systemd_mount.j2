@@ -1,13 +1,13 @@
 [Unit]
-Description={{ description }}
+Description={{ item.value.description }}
 After=network-online.target
 Wants=network-online.target
 
 [Mount]
-What={{ source_location }}
-Where={{ destination_location }}
-Options={{ options }}
-Type={{ type }}
+What={{ item.value.source_location }}
+Where={{ item.value.destination_location }}
+Options={{ item.value.options }}
+Type={{ item.value.type }}
 TimeoutSec=60
 
 [Install]
