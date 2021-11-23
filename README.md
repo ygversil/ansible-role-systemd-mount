@@ -1,4 +1,4 @@
-# pcanham.systemd-mount
+# pcanham.systemd_mount
 
 An ansible role to install and configure XXXX
 
@@ -7,5 +7,5 @@ An ansible role to install and configure XXXX
 ```yaml
 - hosts: servers
   roles:
-     - role: pcanham.systemd-mount
+     - role: pcanham.systemd_mount
 ```

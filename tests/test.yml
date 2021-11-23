@@ -9,4 +9,4 @@
         options: noatime,nosuid,nodev,noexec,mode=1777
         type: tmpfs
   roles:
-    - systemd-mount
+    - systemd_mount
