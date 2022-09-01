@@ -1,22 +1,21 @@
 ---
-- name: Setup systemd Service for mountpoints
+- name: Ensure Systemd mount units are present
   ansible.builtin.template:
     src: systemd_mount.j2
-    dest: /etc/systemd/system/{{ item.value.destination_location[1:] | replace('/', '-') }}.mount
-    mode: 0644
+    dest: /etc/systemd/system/{{ item.dest[1:] | replace('/', '-') }}.mount
     owner: root
     group: root
-  with_dict: "{{ mounts }}"
-  when: item.key is defined
-- name: Daemon reload
+    mode: 0644
+  loop: '{{ mounts }}'
+  register: systemd_mount_units
+- name: Reload Systemd files
+  when: systemd_mount_units.changed
   ansible.builtin.systemd:
     daemon_reload: yes
-- name: Activate systemd mount
+- name: Ensure Systemd mount units are started and enabled
   ansible.builtin.systemd:
-    daemon_reload: yes
-    name: "{{ item.value.destination_location[1:] | replace('/', '-') }}.mount"
+    name: "{{ item.dest[1:] | replace('/', '-') }}.mount"
     state: started
     enabled: yes
     masked: no
-  with_dict: "{{ mounts }}"
-  when: item.key is defined
+  loop: '{{ mounts }}'

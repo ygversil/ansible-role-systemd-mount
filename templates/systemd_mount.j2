@@ -1,14 +1,18 @@
 [Unit]
-Description={{ item.value.description }}
-After=network-online.target
-Wants=network-online.target
+Description={{ item.description }}
+{% if item.after is defined %}
+After={{ item.after }}
+{% endif %}
+{% if item.wants is defined %}
+Wants={{ item.wants }}
+{% endif %}
 
 [Mount]
-What={{ item.value.source_location }}
-Where={{ item.value.destination_location }}
-Options={{ item.value.options }}
-Type={{ item.value.type }}
+What={{ item.src }}
+Where={{ item.dest }}
+Options={{ item.options }}
+Type={{ item.type }}
 TimeoutSec=60
 
 [Install]
-WantedBy=remote-fs.target
+WantedBy={{ item.wantedby | default('multi-user.target') }}
