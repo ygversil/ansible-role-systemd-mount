@@ -9,9 +9,9 @@
   loop: '{{ mounts }}'
   register: systemd_mount_units
 - name: Reload Systemd files
+  when: systemd_mount_units.changed
   ansible.builtin.systemd:
     daemon_reload: yes
-  when: systemd_mount_units.changed
 - name: Ensure Systemd mount units are started and enabled
   ansible.builtin.systemd:
     name: "{{ item.dest[1:] | replace('/', '-') }}.mount"
