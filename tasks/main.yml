@@ -2,7 +2,7 @@
 - name: Setup systemd Service for mountpoints
   ansible.builtin.template:
     src: systemd_mount.j2
-    dest: /etc/systemd/system/{{ item.destination_location[1:] | replace('/', '-') }}.mount
+    dest: /etc/systemd/system/{{ item.dest[1:] | replace('/', '-') }}.mount
     mode: 0644
     owner: root
     group: root
@@ -14,7 +14,7 @@
   when: systemd_mount_units.changed
 - name: Activate systemd mount
   ansible.builtin.systemd:
-    name: "{{ item.destination_location[1:] | replace('/', '-') }}.mount"
+    name: "{{ item.dest[1:] | replace('/', '-') }}.mount"
     state: started
     enabled: yes
     masked: no
