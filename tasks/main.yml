@@ -7,13 +7,14 @@
     owner: root
     group: root
   with_dict: "{{ mounts }}"
+  register: systemd_mount_units
   when: item.key is defined
 - name: Daemon reload
   ansible.builtin.systemd:
     daemon_reload: yes
+  when: systemd_mount_units.changed
 - name: Activate systemd mount
   ansible.builtin.systemd:
-    daemon_reload: yes
     name: "{{ item.value.destination_location[1:] | replace('/', '-') }}.mount"
     state: started
     enabled: yes
