@@ -14,7 +14,5 @@ Options={{ item.value.options }}
 Type={{ item.value.type }}
 TimeoutSec=60
 
-{% if item.value.wantedby is defined %}
 [Install]
-WantedBy={{ item.value.wantedby }}
-{% endif %}
+WantedBy={{ item.value.wantedby | default('multi-user.target') }}
