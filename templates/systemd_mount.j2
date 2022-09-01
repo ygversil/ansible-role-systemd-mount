@@ -1,18 +1,18 @@
 [Unit]
-Description={{ item.value.description }}
-{% if item.value.after is defined %}
-After={{ item.value.after }}
+Description={{ item.description }}
+{% if item.after is defined %}
+After={{ item.after }}
 {% endif %}
-{% if item.value.wants is defined %}
-Wants={{ item.value.wants }}
+{% if item.wants is defined %}
+Wants={{ item.wants }}
 {% endif %}
 
 [Mount]
-What={{ item.value.source_location }}
-Where={{ item.value.destination_location }}
-Options={{ item.value.options }}
-Type={{ item.value.type }}
+What={{ item.source_location }}
+Where={{ item.destination_location }}
+Options={{ item.options }}
+Type={{ item.type }}
 TimeoutSec=60
 
 [Install]
-WantedBy={{ item.value.wantedby | default('multi-user.target') }}
+WantedBy={{ item.wantedby | default('multi-user.target') }}
