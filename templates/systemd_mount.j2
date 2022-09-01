@@ -1,7 +1,11 @@
 [Unit]
 Description={{ item.value.description }}
+{% if item.value.after is defined %}
 After={{ item.value.after }}
+{% endif %}
+{% if item.value.wants is defined %}
 Wants={{ item.value.wants }}
+{% endif %}
 
 [Mount]
 What={{ item.value.source_location }}
@@ -10,5 +14,7 @@ Options={{ item.value.options }}
 Type={{ item.value.type }}
 TimeoutSec=60
 
+{% if item.value.wantedby is defined %}
 [Install]
 WantedBy={{ item.value.wantedby }}
+{% endif %}
