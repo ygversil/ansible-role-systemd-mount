@@ -3,9 +3,9 @@
   ansible.builtin.template:
     src: systemd_mount.j2
     dest: /etc/systemd/system/{{ item.dest[1:] | replace('/', '-') }}.mount
-    mode: 0644
     owner: root
     group: root
+    mode: 0644
   loop: '{{ mounts }}'
   register: systemd_mount_units
 - name: Reload Systemd files
