@@ -11,7 +11,7 @@ None
 
 None
 
-## Role Variables
+## Variables
 
 Only one variable is required: `mounts`: a list of mount objects with the following properties:
 
